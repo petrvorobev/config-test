@@ -1,0 +1,3 @@
+Shared:
+  ApplicationCode : "microservice-template"
+  InstanceUsersLimit : 500
