@@ -1,3 +1,56 @@
-Shared:
-  ApplicationCode : "microservice-template"
-  InstanceUsersLimit : 500
+---
+Logging:
+  IncludeScopes: false
+  Debug:
+    LogLevel:
+      Default: Warning
+  Console:
+    LogLevel:
+      Default: Warning
+spring:
+  application:
+    name: microservice
+  cloud:
+    config:
+      uri: http://cloud-config.local:8888
+CommonSettings:
+  ApplicationID: service-template
+SampleHttpClient:
+  BaseAddress: https://jsonplaceholder.typicode.com
+  RetryAttempts: 3
+Audit:
+  CommonSettings:
+    BootstrapServers: kafka.local:9092
+    DefaultEncoding: utf-8
+  SampleSettings:
+    Topic: hello-topic
+ElasticSearch:
+  URI: http://elk-kibana.local:9200
+Redis:
+  Host: redis.local
+Processes:
+  SampleSettings:
+    ProcessID: sample-process
+    DisplayValue: Sample Process
+Queue:
+  CommonSettings:
+    Host: rabbitmq.local
+    DefaultEncoding: utf-8
+  SampleSettings:
+    Queue: hello
+Jwt:
+  Authority: http://keycloak.local:8080/auth/realms/master
+  Audience: microservice
+eureka:
+  client:
+    serviceUrl: http://eureka.local:8761/eureka/
+    shouldFetchRegistry: 'true'
+    ValidateCertificates: 'false'
+    healthcheck:
+      enabled: true
+  instance:
+    port: 64799
+    hostName: microservice.local
+    statusPageUrl: http://microservice.local:64799/api/values
+    healthCheckUrl: http://microservice.local:64799/api/values
+    homePageUrl: http://microservice.local:64799/api/values
